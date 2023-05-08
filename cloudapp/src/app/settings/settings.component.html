@@ -1,0 +1,95 @@
+
+<!--<ng-template #loading_spinner>
+    <div class="loading-shade">
+      <mat-progress-spinner
+        mode="indeterminate"
+        diameter="50"
+      ></mat-progress-spinner>
+    </div>
+  </ng-template>-->
+  
+  <div class="loading-shade" *ngIf="saving">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+  </div>
+  <!--<div class="loading-shade" *ngIf="saving">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+  </div>-->
+  <div *ngIf="form">
+  <section>
+    <form [formGroup]="form" >
+      <div class="eca-actions">
+        <a [routerLink]="['']" style="float: right">
+          <button mat-flat-button color="secondary">
+            <mat-icon>arrow_back</mat-icon> {{ 'Translate.Back' | translate }}
+          </button>
+        </a>
+        <button
+          mat-flat-button
+          color="secondary"
+          type="button"
+          (click)="onRestore()"
+          style="margin-left: 4px"
+        >
+        {{ 'Translate.Restore' | translate }}
+        </button>
+        <div buttons>
+          <button mat-flat-button type="button" color="primary" (click)="save()" [disabled]="!(form?.dirty)||(form?.invalid)">{{ 'Translate.Save' | translate }}</button>
+        </div>
+        <!--
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!form.valid"
+        >
+          Save
+        </button>-->
+      </div>
+  
+      <h1 translate>Translate.Settings</h1>
+      
+      <mat-form-field>
+        <mat-label>{{ 'Translate.Library' | translate }}</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="library"
+          minlength="1"
+          required
+          #library
+          
+        />
+          
+      </mat-form-field>
+      
+      
+        <mat-form-field>
+          <mat-label>{{ 'Translate.CircDesk' | translate }}</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="circDesk"
+            required
+            minlength="1"
+            #circDesk
+           
+            
+          />
+          
+        </mat-form-field>
+        <mat-checkbox labelPosition="after" formControlName="autoSkipUser" #autoSkipUser>{{ 'Translate.SkipUserBehaviour' | translate }}
+</mat-checkbox>
+    
+        <div *ngIf="circDesk.invalid && (circDesk.dirty || circDesk.touched)">
+
+          <div *ngIf="circDesk.errors.required">
+            Name is required.
+          </div>
+          </div>  
+      
+      <br /><br /><br />
+      
+    </form>
+    <pre>{{ form.value | json }}</pre>
+  </section>
+  </div>

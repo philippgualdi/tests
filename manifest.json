@@ -1,0 +1,20 @@
+{
+   "id": "routing-app",
+   "title": "Item Routing",
+   "subtitle": "Item Routing (Beta)",
+   "author": "TUG",
+   "description": "This App makes loans on next interested user",
+   "icon": {
+      "type": "url",
+      "value": "/assets/routing_logo.png"
+   },
+   "pages": {
+      "settings": "/#/settings"
+   },
+   "contentSecurity": {
+      "connectSrc": [],
+      "sandbox": {
+         "popups": true
+      }
+   }
+}
